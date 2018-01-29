@@ -216,7 +216,7 @@ scriven.parse
 puts scriven.to_str
 
 # Render a bargraph showing percentages of chapter and scenes
-puts "\nChapter & Section Heat Map\n\n"
+puts "\nChapter & Scene Heat Map\n\n"
 puts scriven.stats_bargraph
 
 puts "\n"
