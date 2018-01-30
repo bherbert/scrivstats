@@ -5,15 +5,19 @@ require 'pathname'
 require 'rtf'
 require 'yaml'
 
+# ToDo
+# - pull "Manuscript" folder named to a constant
+# - command arg input
+
 # Path to Scrivener test document
 doc_path = './data/book.scriv/'
 
+# -----------------------------------------------------------------------------
 # Model a Scrivener document
 class Scriven
   # Relative path within the Scrivener document (package) to text files
   DOCS_PATH = '/Files/Docs/'.freeze
 
-  attr_reader :chapters
   def initialize(scrivener_path)
     # Path to the Scrivener project document (less trailing slash)
     @scrivener_path = scrivener_path.chomp("\/")
@@ -32,12 +36,10 @@ class Scriven
     manu = binder_items.detect { |el| el.Title.content == 'Manuscript' }
     chapter_nodes = manu.Children.BinderItem.select { |el| el.Title.content.match('Chapter') }
     chapter_nodes.each do |chapter_node|
-      # puts chap.class
       title = chapter_node.Title.content
       id = chapter_node['ID']
       chapter = Chapter.new(id, title)
       add_chapter(chapter)
-      # puts '===== ' + title
       node = chapter_node.Children.BinderItem("[Type='Text']")
       if node.class == Nokogiri::XML::Element
         # only one node
@@ -49,6 +51,10 @@ class Scriven
       end
     end
     compute_wc
+  end
+
+  def chapters
+    @chapters
   end
 
   # Compute word counts of all document components
@@ -72,7 +78,7 @@ class Scriven
   end
 
   # Answer a bargraph rendering of the document structure.
-  # This gives a quick visual of the relative sizes of chapters and sections.
+  # This gives a quick visual of the relative sizes of chapters and scenes.
   def stats_bargraph
     bar_graph = ''
     # puts 'Status BarGraph here...'
@@ -88,25 +94,27 @@ class Scriven
       chapter.scenes.each { |scene| scene.fraction_of_total(chapter.wc) }
     end
 
-    # Longest chapter gets full bar length
+    # Largest chapter renders a bar of this length
+    bar_length = 100
+
+    # Longest chapter gets full bar length. All others are scaled down from that.
     longest_chapter = chapters.max_by(&:wc)
 
-    bar_length = 100
+    # Scales bar of other chapters relative to longest
     chapter_bar_scale_factor = 100 / longest_chapter.fraction
 
     # Compute a bar graph showing relative sizes of chapter (to the whole) and
-    # relative sizes of scenes (to the chatper)
+    # relative sizes of scenes (to the chapter)
     chapters.each do |chapter|
-      # Show length of chapter relative to percent of document
+      # Show length of chapter relative to its percentage of the document
       chapter_bar_length = chapter_bar_scale_factor * chapter.fraction
       bar = chapter.scenes.collect do |scene|
         # Show length of each scene relative to relative size of chapter
         bar_len = chapter_bar_length * scene.fraction
-        '*' * bar_len
+        "\u2586" * bar_len
       end
-      bar_graph += format("[%-10s] %s\n", chapter.title, bar.join('_'))
+      bar_graph += format("[%-10s] %s\n", chapter.title, bar.join("\u2581"))
     end
-
     bar_graph
   end
 
@@ -133,17 +141,18 @@ class Scriven
     Shellwords.shellescape(format('%s%s', @scrivener_path, DOCS_PATH))
   end
 
-  # The .scrivx
+  # Answer the basename of the Scrivener project document
   def scrivx_name
     File.basename(@scrivener_path, '.scriv')
   end
 
-  # Answer the absolute path to the .scrivx metadata file in the Scrivener project.
-  # The file defines the structure of the project.
+  # Answer the absolute path to the .scrivx metadata file in the Scrivener
+  # project. The file defines the structure of the project.
   def scrivx
     format('%s/%s.scrivx', @scrivener_path, scrivx_name)
   end
 
+  # -----------------------------------------------------------------------------
   # A Chapter in the manuscript
   class Chapter
     attr_reader :id, :title, :scenes, :fraction
@@ -178,6 +187,7 @@ class Scriven
     end
   end
 
+  # -----------------------------------------------------------------------------
   # a Scene in a Chapter
   class Scene
     attr_reader :id, :title, :fraction
@@ -207,7 +217,9 @@ class Scriven
   end
 end
 
-puts format('Running on [%s]...', doc_path)
+# -----------------------------------------------------------------------------
+
+puts format("Running on [%s]...\n", doc_path)
 
 scriven = Scriven.new(doc_path)
 scriven.parse
