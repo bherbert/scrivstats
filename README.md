@@ -3,7 +3,7 @@
 
 ## Chapter & Scene "Heat Map"
 
-``` Chapter & Section Heat Map
+``` Chapter & Scene Heat Map
 
 [Chapter 1 ] ****_
 [Chapter 2 ] ***************_*******************_***_******_*_*********
