@@ -15,9 +15,9 @@ I'm not a Scrivener user nor an author. This is written for an author friend to 
 
 ## Requirements
 
-0. A Mac (uses `textutil`)
-0. [Ruby 2.5.x](https://www.ruby-lang.org).
-1. A Scrivener version 2.x document (has **not** been tested with Scrivener 3.x)
+* A Mac (uses `textutil`)
+* [Ruby 2.5.x](https://www.ruby-lang.org).
+* A Scrivener version 2.x document (has **not** been tested with Scrivener 3.x)
 
 ## Setup
 
