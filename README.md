@@ -7,7 +7,7 @@ I'm not a Scrivener user nor an author. This is written for an author friend to 
 ## Features
 
 * Analyses document structure and prints an outline view showing chapters and scenes, with word counts at the scene, chapter, and overall document levels.
-* Generates a 'heat map' showing relative sizes (based on word counts) of chapters and scenes within, useful when working to refactor a manuscript (e.g. to minimize exceedling wordy chapters/scenes relative to others).
+* Generates a 'heat map' showing relative sizes (based on word counts) of chapters and scenes within, useful when working to refactor a manuscript (e.g. to minimize exceedingly wordy chapters/scenes relative to others).
 
 ## Scrivener Document Structure Assumptions
 * The Scrivener Binder folder holding the manuscript content is titled "Manuscript"
