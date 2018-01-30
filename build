@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+echo "Building gem..."
+gem build scrivstats.gemspec
+gem install ./scrivstats-0.1.0.gem

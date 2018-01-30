@@ -1,0 +1,9 @@
+#! /usr/bin/env ruby
+# frozen_string_literal: true
+
+require "scrivstats"
+require "scrivstats/cli"
+require "scrivstats/identity"
+
+Process.setproctitle ScrivStats::Identity.version_label
+ScrivStats::CLI.start
