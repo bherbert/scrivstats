@@ -4,7 +4,7 @@ module ScrivStats
   class Runner
     def initialize(path = '.')
       @path = path
-      end
+    end
 
     # Does Scrivener document exist?
     def file?

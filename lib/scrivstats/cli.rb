@@ -2,7 +2,6 @@
 
 require 'thor'
 require 'thor/actions'
-require 'runcom'
 
 module ScrivStats
   # The Command Line Interface (CLI) for the gem.
@@ -10,13 +9,6 @@ module ScrivStats
     include Thor::Actions
 
     package_name Identity.version_label
-
-    # def self.configuration
-    #   Runcom::Configuration.new project_name: Identity.name, defaults: {
-    #     label: '## Table of Contents',
-    #     includes: ['README.md']
-    #   }
-    # end
 
     def initialize(args = [], options = {}, config = {})
       super args, options, config
@@ -35,7 +27,7 @@ module ScrivStats
       else
         say 'Scrivener document not found: ' + path
       end
-      end
+    end
 
     desc '-v, [--version]', 'Show gem version.'
     map %w[-v --version] => :version

@@ -1,9 +1,6 @@
 
 require 'nokogiri'
 require 'shellwords'
-require 'pathname'
-require 'rtf'
-
 
   # -----------------------------------------------------------------------------
   # Model a Scrivener document
