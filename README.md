@@ -35,6 +35,12 @@ From the command line, type: `scrivstas --help`
     scrivstats -h, [--help=COMMAND]   # Show this message or get help for a command.
     scrivstats -v, [--version]        # Show gem version.
 
+## Tests
+
+To test, run:
+
+    bundle exec rake
+
 ## Chapter & Scene "Heat Map"
 
 Following is an example 'heat map' showing relative sizes of chapters and scenes within each chapter.  Scenes are delimited with an underscore.
