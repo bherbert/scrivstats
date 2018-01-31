@@ -1,4 +1,4 @@
-module ScrivStats
+module Scrivstats
   class Runner
     def initialize(path = '.')
       @path = path
