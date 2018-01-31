@@ -1,5 +1,22 @@
 # Scrivener Document Stats Generator
 
+<!-- Tocer[start]: Auto-generated, don't remove. -->
+
+## Table of Contents
+
+  - [Disclaimer](#disclaimer)
+  - [Features](#features)
+  - [Scrivener Document Structure Assumptions](#scrivener-document-structure-assumptions)
+  - [Requirements](#requirements)
+  - [Setup](#setup)
+  - [Usage](#usage)
+    - [Command Line Interface (CLI)](#command-line-interface-cli)
+  - [Tests](#tests)
+  - [Chapter & Scene "Heat Map"](#chapter--scene-heat-map)
+  - [License](#license)
+
+<!-- Tocer[finish]: Auto-generated, don't remove. -->
+
 ## Disclaimer
 
 I'm not a Scrivener user nor an author. This is written for an author friend to give them a better overview of the "shape" of a manuscript in terms of relative sizes of chapters and scenes. Maybe this kind of report is possible in Scrivener somewhere but I was unable to find that functionality. Hence this script.
