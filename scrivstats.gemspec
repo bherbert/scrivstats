@@ -7,13 +7,14 @@ Gem::Specification.new do |spec|
   spec.name = Scrivstats::Identity.name
   spec.version = Scrivstats::Identity.version
   spec.platform = Gem::Platform::RUBY
-  spec.authors = ["Brooke Kuhlmann"]
-  spec.email = ["brooke@alchemists.io"]
-  spec.homepage = "https://github.com/bkuhlmann/scrivstats"
-  spec.summary = ""
+  spec.authors = ["Brant Herbert"]
+  spec.email = ["bherbertaz@gmail.com"]
+  spec.homepage = "https://github.com/bherbert/scrivstats"
+  spec.summary = "Perform an analysis of Scrivener project"
   spec.license = "MIT"
 
   spec.required_ruby_version = "~> 2.5"
+  spec.add_dependency "nokogiri", "~> 1.8"
   spec.add_dependency "runcom", "~> 2.0"
   spec.add_dependency "thor", "~> 0.20"
   spec.add_development_dependency "bundler-audit", "~> 0.6"

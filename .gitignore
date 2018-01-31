@@ -1,6 +1,9 @@
 *.gem
 .bundle
 .rubocop-http*
+data/*
+doc/*
 pkg/*
 Gemfile.lock
 tmp
+.vscode

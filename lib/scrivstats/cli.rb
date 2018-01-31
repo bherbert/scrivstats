@@ -42,6 +42,18 @@ module Scrivstats
       end
     end
 
+    desc "-f, [--file]", "Process Scrivener Document File"
+    map %w[-f --file] => :generate
+    def generate(path = '.')
+      runner = Runner.new path
+      if runner.file?
+        runner.run
+        say "Stats generated for: " + path
+      else
+        say "Scrivener document not found: " + path
+      end
+    end
+
     desc "-v, [--version]", "Show gem version."
     map %w[-v --version] => :version
     def version
