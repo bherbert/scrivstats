@@ -1,5 +1,3 @@
-
-
 module ScrivStats
   class Runner
     def initialize(path = '.')
@@ -29,5 +27,5 @@ module ScrivStats
     private
 
     attr_reader :path
-end
+  end
 end

@@ -5,5 +5,5 @@ require "scrivstats"
 require "scrivstats/cli"
 require "scrivstats/identity"
 
-Process.setproctitle ScrivStats::Identity.version_label
-ScrivStats::CLI.start
+Process.setproctitle Scrivstats::Identity.version_label
+Scrivstats::CLI.start

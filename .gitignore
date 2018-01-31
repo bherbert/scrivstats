@@ -1,5 +1,9 @@
-scrivstats-0.1.0.gem
-.vscode
+*.gem
+.bundle
+.rubocop-http*
 data/*
 doc/*
-
+pkg/*
+Gemfile.lock
+tmp
+.vscode
