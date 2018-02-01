@@ -84,6 +84,8 @@ require 'shellwords'
 
       # Longest chapter gets full bar length.
       longest_chapter = chapters.max_by(&:wc)
+      
+      words_per_chart_segment = longest_chapter.wc / bar_length
 
       # Other chapters are scaled relative to longest
       chapter_bar_scale_factor = bar_length / longest_chapter.fraction
@@ -96,10 +98,14 @@ require 'shellwords'
         bar = chapter.scenes.collect do |scene|
           # Show length of each scene relative to relative size of chapter
           bar_len = chapter_bar_length * scene.fraction
-          "\u2586" * bar_len
+          "*" * bar_len
         end
-        bar_graph += format("[%-10s] %s\n", chapter.title, bar.join("\u2581"))
+        bar_graph += format("[%-10s] %s\n", chapter.title, bar.join("_"))
+                # bar_graph += format("[%-10s] %s\n", chapter.title, bar.join("\u2581"))
       end
+      
+      bar_graph += format("\n  * = %d words (min)",words_per_chart_segment)
+      
       bar_graph
     end
 
