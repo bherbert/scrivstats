@@ -10,16 +10,18 @@ module Scrivstats
     end
 
     def run
+      puts format("Report created: %s\n\n", Time.new)
       puts format("Running on [%s]...\n", @path)
 
       scriven = Scriven.new(path)
       scriven.parse
 
       # Dump the final structure
+      puts "\n== Structure & Word Count\n\n"
       puts scriven.to_str
 
       # Render a bargraph showing percentages of chapter and scenes
-      puts "\nChapter & Scene Heat Map\n\n"
+      puts "\n== Chapter & Scene Heat Map\n\n"
       puts scriven.stats_bargraph
       puts "\n"
     end

@@ -60,7 +60,7 @@ require 'shellwords'
     # Stats output
 
     def to_str
-      s = format("Document: %s (%5d)\n", scrivx_name, wc)
+      s = format("(%5d) %s \n", wc, scrivx_name)
       @chapters.each { |chapter| s += chapter.to_str }
       s
     end
@@ -101,7 +101,7 @@ require 'shellwords'
           "*" * bar_len
         end
         bar_graph += format("[%-10s] %s\n", chapter.title, bar.join("_"))
-                # bar_graph += format("[%-10s] %s\n", chapter.title, bar.join("\u2581"))
+        # bar_graph += format("[%-10s] %s\n", chapter.title, bar.join("\u2581"))
       end
       
       bar_graph += format("\n  * = %d words (min)",words_per_chart_segment)
@@ -162,7 +162,8 @@ require 'shellwords'
 
       def to_str
         s = ''
-        s << format("%4s (%5d) => %s\n", @id, wc, @title)
+        s << format("(%5d) => %s\n", wc, @title)
+        # s << format("%4s (%5d) => %s\n", @id, wc, @title)
         @scenes.each { |scene| s << scene.to_str }
         s
       end
@@ -192,7 +193,8 @@ require 'shellwords'
       end
 
       def to_str
-        format("  %4s (%5d) => %s\n", @id, @wc, @title)
+        format("  (%5d) => %s\n", @wc, @title)
+        # format("  %4s (%5d) => %s\n", @id, @wc, @title)        
       end
 
       # Answer the word count of the scene file
